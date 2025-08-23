@@ -1,5 +1,5 @@
-import { TokenCard } from "../TokenCard";
 import { TokenSelector } from "../TokenSelector/TokenSelector";
+import { TokenSwapCompareSection } from "../TokenSwapCompareSection/TokenSwapCompareSection";
 import { TokenSwapContextProvider } from "./context/TokenSwapContextProvider";
 
 export const TokenSwap = () => {
@@ -10,10 +10,7 @@ export const TokenSwap = () => {
       </h1>
       <TokenSwapContextProvider>
         <TokenSelector />
-        <div className="flex justify-between gap-5">
-          <TokenCard ticker={"USDC"} icon={""} />
-          <TokenCard ticker={"BTC"} icon={""} />
-        </div>
+        <TokenSwapCompareSection />
       </TokenSwapContextProvider>
     </div>
   );
