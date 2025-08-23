@@ -1,4 +1,4 @@
-import { TokenSwap } from "@/components/TokenSwap";
+import { TokenSwap } from "@/components/TokenSwap/TokenSwap";
 import Image from "next/image";
 
 export default function Home() {
