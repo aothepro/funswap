@@ -8,10 +8,12 @@ import styles from "./styles.module.css";
 export const TokenSwapCompareSection = () => {
   const { from, to } = useContext(TokenSwapContext);
   return (
-    <div className="flex p-5 justify-center">
+    <div className="flex flex-col md:flex-row p-5 justify-center items-center">
       <TokenCard token={from} cardType={CardType.FROM} />
-      <div className="min-w-32 grow h-2 overflow-hidden my-auto border border-gray-200">
-        <div className={`${styles.pipeline} w-full h-full bg-blue-500`}></div>
+      <div className="-z-10 rotate-90 md:rotate-0 flex items-center w-32 h-32 md:w-64 md:h-64 overflow-hidden my-auto">
+        <div
+          className={`${styles.pipeline} max-w-32 w-full h-1 bg-blue-500`}
+        ></div>
       </div>
       <TokenCard token={to} cardType={CardType.TO} />
     </div>

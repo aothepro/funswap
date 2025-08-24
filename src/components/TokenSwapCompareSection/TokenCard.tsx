@@ -92,7 +92,7 @@ export const TokenCard = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full cursor-pointer">
       <div className="relative">
         <span
           className={`absolute ms-2 z-10 ${
@@ -108,7 +108,7 @@ export const TokenCard = ({
           inputRef.current?.focus();
           inputRef.current?.select();
         }}
-        className={`flex items-center min-h-52 bg-white border border-gray-200 rounded-lg shadow-sm hover:scale-110 ${
+        className={`flex items-center min-h-52 bg-white border border-gray-200 rounded-lg shadow-sm hover:scale-105 ${
           cardType === CardType.FROM
             ? "hover:from-indigo-400 hover:to-teal-500 bg-linear-to-r/srgb from-indigo-500 to-teal-400"
             : "hover:from-violet-400 hover:to-fuchsia-500 bg-linear-to-bl from-violet-500 to-fuchsia-500"

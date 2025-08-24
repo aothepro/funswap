@@ -22,3 +22,8 @@
     background-position: 0% 50%;
   }
 }
+
+input::selection {
+    background-color: #000;
+    color: white;
+}
