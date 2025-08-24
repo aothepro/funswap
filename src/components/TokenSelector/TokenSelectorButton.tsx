@@ -16,13 +16,33 @@ export const TokenSelectorButton = ({ token }: { token: TToken }) => {
       return;
     }
 
-    if (from && !isTokenSame(token, to)) {
+    if (from != null && to == null) {
+      if (isTokenSame(token, from)) {
+        setFrom(null);
+      }
       setTo(token);
       return;
     }
 
-    setFrom(token);
-    setTo(null);
+    if (from == null && to != null) {
+      if (isTokenSame(token, to)) {
+        setTo(null);
+      }
+      setFrom(token);
+      return;
+    }
+
+    if (isTokenSame(token, from)) {
+      setFrom(null);
+      return;
+    }
+
+    if (isTokenSame(token, to)) {
+      setTo(null);
+      return;
+    }
+
+    setTo(token);
   };
 
   return (
