@@ -9,8 +9,11 @@
     white,
     deepskyblue
   );
-  background-size: 180% 180%;
-  animation: gradient-animation 15s ease infinite forwards;
+  background-size: 200% 100%;
+  animation-duration: 5s;
+  animation-name: gradient-animation;
+  animation-iteration-count: infinite;
+  animation-direction: forwards;
 }
 
 @keyframes gradient-animation {
