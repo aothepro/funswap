@@ -176,7 +176,7 @@ export const TokenCard = ({
                   </div>
                 </div>
               ) : (
-                <div className="flex gap-3">
+                <div className="flex gap-3 px-5">
                   <input
                     type="text"
                     id="token-value"
