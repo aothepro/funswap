@@ -1,7 +1,11 @@
 "use client";
 
 import { ReactNode, useState } from "react";
-import { TokenSwapContext, TToken } from "./TokenSwapContext";
+import {
+  TConversionDetails,
+  TokenSwapContext,
+  TToken,
+} from "./TokenSwapContext";
 
 export const TokenSwapContextProvider = ({
   children,
@@ -10,6 +14,9 @@ export const TokenSwapContextProvider = ({
 }) => {
   const [from, setFrom] = useState<TToken | null>(null);
   const [to, setTo] = useState<TToken | null>(null);
+  const [conversionDetails, setConversionDetails] =
+    useState<TConversionDetails | null>(null);
+
   return (
     <TokenSwapContext.Provider
       value={{
@@ -17,6 +24,8 @@ export const TokenSwapContextProvider = ({
         setFrom,
         to,
         setTo,
+        conversionDetails,
+        setConversionDetails,
       }}
     >
       {children}
