@@ -7,7 +7,7 @@ import { TokenSwapContext } from "../TokenSwap/context/TokenSwapContext";
 export const TokenSwapCompareSection = () => {
   const { from, to } = useContext(TokenSwapContext);
   return (
-    <div className="flex justify-between gap-5">
+    <div className="flex gap-3 p-5 justify-center">
       <TokenCard token={from} cardType={CardType.FROM} />
       <TokenCard token={to} cardType={CardType.TO} />
     </div>

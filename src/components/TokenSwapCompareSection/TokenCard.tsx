@@ -55,6 +55,7 @@ export const TokenCard = ({
   }, [token]);
 
   const [amountInput, setAmount] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const controller = loadToken();
@@ -91,44 +92,47 @@ export const TokenCard = ({
   };
 
   return (
-    <div
-      className={`block min-w-1/2 bg-white border border-gray-200 rounded-lg shadow-sm hover:scale-110 ${
-        cardType === CardType.FROM
-          ? "hover:from-indigo-400 hover:to-teal-500 bg-linear-to-r/srgb from-indigo-500 to-teal-400"
-          : "hover:from-violet-400 hover:to-fuchsia-500 bg-linear-to-bl from-violet-500 to-fuchsia-500"
-      }`}
-    >
-      <div className="block relative p-2">
+    <div className="w-full">
+      <div className="relative">
         <span
-          className={`absolute ms-2 ${
-            cardType === CardType.FROM ? "left-0" : "right-0"
-          } bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300`}
+          className={`absolute ms-2 z-10 ${
+            cardType === CardType.FROM ? "left-0 top-2" : "right-0 top-2"
+          } bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-white`}
         >
           {cardType === CardType.FROM ? "From" : "To"}
         </span>
       </div>
-      <div className="p-6">
+      <div
+        onClick={() => {
+          if (inputRef == null) return;
+          inputRef.current?.focus();
+          inputRef.current?.select();
+        }}
+        className={`flex items-center min-h-52 bg-white border border-gray-200 rounded-lg shadow-sm hover:scale-110 ${
+          cardType === CardType.FROM
+            ? "hover:from-indigo-400 hover:to-teal-500 bg-linear-to-r/srgb from-indigo-500 to-teal-400"
+            : "hover:from-violet-400 hover:to-fuchsia-500 bg-linear-to-bl from-violet-500 to-fuchsia-500"
+        }`}
+      >
         {token === null ? (
-          <>
-            <div
-              className={`flex ${
-                cardType === CardType.FROM && "flex-row-reverse"
-              } gap-2`}
-            >
-              <Image
-                className="size-6 animate-bounce"
-                aria-hidden
-                src="/icons/uparrow.svg"
-                alt="File icon"
-                width={16}
-                height={16}
-              />
-              <div className="flex gap-3 m-auto">Select a Token to convert</div>
-            </div>
-          </>
+          <div
+            className={`flex items-center m-auto ${
+              cardType === CardType.FROM && "flex-row-reverse"
+            }`}
+          >
+            <Image
+              className="size-6 animate-bounce my-auto"
+              aria-hidden
+              src="/icons/uparrow.svg"
+              alt="File icon"
+              width={16}
+              height={16}
+            />
+            <div className="text-xl">Select a Token to swap</div>
+          </div>
         ) : (
-          <>
-            <div className="flex gap-3">
+          <div className="flex flex-col items-center w-full">
+            <div className="flex items-center gap-3">
               <Image
                 aria-hidden
                 src="/file.svg"
@@ -142,34 +146,32 @@ export const TokenCard = ({
             </div>
             <div className="font-normal text-gray-700 dark:text-gray-400">
               {inFlight ? (
-                <Spinner />
+                <div className="flex gap-2">
+                  <Spinner />
+                  <div className="my-auto text-white">
+                    Fetching Latest Price
+                  </div>
+                </div>
               ) : (
                 <div className="flex gap-3">
                   <input
                     type="text"
                     id="token-value"
-                    onBlur={changeConversionHandler}
-                    onKeyUp={(e) => {
-                      if (e.key === "Enter") {
-                        e.target.blur();
-                      }
-                    }}
+                    ref={inputRef}
+                    onChange={changeConversionHandler}
                     value={amountInput}
-                    onChange={(e) => {
-                      setAmount(e.currentTarget.value);
-                    }}
-                    className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   />
                   <label
                     htmlFor="token-value"
                     className="block m-auto text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    {token.symbol}
+                    {token?.symbol}
                   </label>
                 </div>
               )}
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>
