@@ -128,7 +128,7 @@ export const TokenCard = ({
               width={16}
               height={16}
             />
-            <div className="text-xl">Select a Token to swap</div>
+            <div className="text-xl text-white">Select a Token to swap</div>
           </div>
         ) : (
           <div className="flex flex-col items-center w-full">
