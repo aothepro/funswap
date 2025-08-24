@@ -27,6 +27,8 @@ export const TokenCard = ({
 }) => {
   const [rate, setRate] = useState<number>(0);
   const [inFlight, setInFlight] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [isContentCopied, setIsContentCopied] = useState(false);
 
   const { conversionDetails, setConversionDetails } =
     useContext(TokenSwapContext);
@@ -89,6 +91,27 @@ export const TokenCard = ({
       symbol: token?.symbol ?? "",
       valueInUSD: parseFloat(cleaned) * rate,
     });
+  };
+
+  const handleCopy = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!navigator.clipboard) {
+      inputRef.current?.focus();
+      inputRef.current?.select();
+      document.execCommand("copy");
+      setIsContentCopied(true);
+    } else {
+      await navigator.clipboard.writeText(amountInput).then(() => {
+        setIsContentCopied(true);
+      });
+    }
+
+    setTimeout(() => {
+      setIsContentCopied(false);
+      setShowTooltip(false);
+    }, 2000);
   };
 
   return (
@@ -168,6 +191,39 @@ export const TokenCard = ({
                   >
                     {token?.symbol}
                   </label>
+                  <div>
+                    {showTooltip && (
+                      <div className="relative">
+                        <div className="absolute -translate-y-10 z-50 whitespace-normal break-words rounded-lg bg-black py-1.5 px-3 font-sans text-sm font-normal text-white focus:outline-none">
+                          {isContentCopied ? "Copied" : "Copy"}
+                        </div>
+                      </div>
+                    )}
+                    <button
+                      onMouseEnter={() => {
+                        setShowTooltip(true);
+                      }}
+                      onMouseLeave={() => {
+                        if (!isContentCopied) setShowTooltip(false);
+                      }}
+                      onClick={handleCopy}
+                      className="cursor-pointer rounded-lg dark:bg-gray-800 bg-gray-50 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    >
+                      <div className="h-4 w-4">
+                        <svg
+                          viewBox="0 0 16 16"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            className="fill-gray-500 dark:fill-amber-500"
+                            d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z"
+                            clip-rule="evenodd"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
