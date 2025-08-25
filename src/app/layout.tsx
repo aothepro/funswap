@@ -12,6 +12,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const DEFAULT_DOMAIN = "https://funswap.vercel.app";
+
 export const metadata: Metadata = {
   title: "FunSwap | Swap Crypto Tokens Instantly",
   description:
@@ -23,7 +25,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const domain = process.env.HOSTING_DOMAIN;
+  const domain = process.env.HOSTING_DOMAIN || DEFAULT_DOMAIN;
   return (
     <html lang="en">
       <head>
