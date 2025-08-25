@@ -169,14 +169,14 @@ export const TokenCard = ({
             </div>
             <div className="font-normal text-gray-700 dark:text-gray-400">
               {inFlight ? (
-                <div className="flex gap-2">
+                <div className="flex gap-2 h-12 my-auto">
                   <Spinner />
                   <div className="my-auto text-white">
-                    Fetching Latest Price
+                    Fetching latest price...
                   </div>
                 </div>
               ) : (
-                <div className="flex gap-3 px-5">
+                <div className="flex gap-3 px-5 h-12">
                   <input
                     type="text"
                     id="token-value"
