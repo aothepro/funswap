@@ -116,7 +116,7 @@ export const TokenCard = ({
   };
 
   return (
-    <div className="w-full cursor-pointer">
+    <div className="cursor-pointer w-md">
       <div className="relative">
         <span
           className={`absolute ms-2 z-10 ${
