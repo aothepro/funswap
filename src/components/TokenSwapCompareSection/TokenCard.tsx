@@ -12,6 +12,7 @@ import {
   useState,
 } from "react";
 import { Spinner } from "../Spinner/Spinner";
+import { getTokenImage } from "@/utils/getTokenImage";
 
 export enum CardType {
   FROM,
@@ -154,14 +155,13 @@ export const TokenCard = ({
             <div className="text-xl text-white">Select a Token to swap</div>
           </div>
         ) : (
-          <div className="flex flex-col items-center w-full">
+          <div className="flex flex-col gap-6 items-center w-full">
             <div className="flex items-center gap-3">
               <Image
-                aria-hidden
-                src="/file.svg"
-                alt="File icon"
-                width={16}
-                height={16}
+                src={getTokenImage(token.symbol)}
+                width={32}
+                height={32}
+                alt={`token ${token.symbol}`}
               />
               <h5 className="text-2xl font-bold tracking-tight text-white">
                 {token?.symbol}
