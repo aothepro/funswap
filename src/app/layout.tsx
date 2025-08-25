@@ -41,13 +41,13 @@ export default function RootLayout({
           name="keywords"
           content="crypto swap, token swap, real-time crypto prices, DeFi, decentralized exchange, crypto trading, DEX, token exchange"
         />
-        <meta name="author" content="YOUR NAME OR COMPANY" />
+        <meta name="author" content="Ashraf Omar" />
         <meta name="robots" content="index, follow" />
 
         {/* Basic Meta Tags */}
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1"></meta>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=5"></meta>
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />

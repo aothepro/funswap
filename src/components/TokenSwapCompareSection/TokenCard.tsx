@@ -163,9 +163,9 @@ export const TokenCard = ({
                 height={32}
                 alt={`token ${token.symbol}`}
               />
-              <h5 className="text-2xl font-bold tracking-tight text-white">
+              <div className="text-2xl font-bold tracking-tight text-white">
                 {token?.symbol}
-              </h5>
+              </div>
             </div>
             <div className="font-normal text-gray-700 dark:text-gray-400">
               {inFlight ? (
@@ -208,6 +208,7 @@ export const TokenCard = ({
                       }}
                       onClick={handleCopy}
                       className="cursor-pointer rounded-lg dark:bg-gray-800 bg-gray-50 py-3 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                      aria-label={`copy ${token.symbol} token value`}
                     >
                       <div className="h-4 w-4">
                         <svg

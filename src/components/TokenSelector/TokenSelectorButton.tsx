@@ -68,6 +68,7 @@ export const TokenSelectorButton = ({ token }: { token: TToken }) => {
         isTokenSame(to, token) &&
         "scale-120 font-bold text-white hover:from-violet-400 hover:to-fuchsia-500 bg-linear-to-bl from-violet-500 to-fuchsia-500"
       } cursor-pointer block max-w-sm p-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 hover:scale-120 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}
+      aria-label={`select ${token.symbol} token`}
     >
       <div className="flex gap-2">
         <Image

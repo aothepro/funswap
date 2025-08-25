@@ -36,6 +36,7 @@ export const TokenSwapShareButton = () => {
             setIsContentCopied(false);
           }}
           onClick={handleCopy}
+          aria-label="share"
         >
           <svg
             className="fill-white"
@@ -59,6 +60,7 @@ export const TokenSwapShareButton = () => {
               </g>
             </g>
           </svg>
+          <span className="sr-only">Click to share</span>
         </button>
       </div>
     </>
