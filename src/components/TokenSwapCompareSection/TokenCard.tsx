@@ -207,7 +207,7 @@ export const TokenCard = ({
                         if (!isContentCopied) setShowTooltip(false);
                       }}
                       onClick={handleCopy}
-                      className="cursor-pointer rounded-lg dark:bg-gray-800 bg-gray-50 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                      className="cursor-pointer rounded-lg dark:bg-gray-800 bg-gray-50 py-3 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                     >
                       <div className="h-4 w-4">
                         <svg
@@ -215,7 +215,7 @@ export const TokenCard = ({
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            className="fill-gray-500 dark:fill-amber-500"
+                            className="fill-gray-500 dark:fill-white"
                             d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z"
                             clipRule="evenodd"
                             fillRule="evenodd"
