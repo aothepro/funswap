@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import {
   TokenSwapContext,
   TToken,
@@ -8,9 +8,13 @@ import {
 import { isTokenSame } from "@/utils/isTokenSame";
 import Image from "next/image";
 import { getTokenImage } from "@/utils/getTokenImage";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export const TokenSelectorButton = ({ token }: { token: TToken }) => {
   const { from, to, setFrom, setTo } = useContext(TokenSwapContext);
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   const handleTokenClick = () => {
     if (from == null && to == null) {
@@ -27,11 +31,31 @@ export const TokenSelectorButton = ({ token }: { token: TToken }) => {
       setFrom(token);
     } else if (isTokenSame(token, from)) {
       setFrom(null);
-      return;
     } else if (isTokenSame(token, to)) {
       setTo(null);
     } else setTo(token);
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (from) {
+      params.set("fromChainId", from.chainId);
+      params.set("fromSymbol", from.symbol);
+    } else {
+      params.delete("fromChainId");
+      params.delete("fromSymbol");
+    }
+
+    if (to) {
+      params.set("toChainId", to.chainId);
+      params.set("toSymbol", to.symbol);
+    } else {
+      params.delete("toChainId");
+      params.delete("toSymbol");
+    }
+    router.push(`?${params.toString()}`);
+  }, [from, router, searchParams, to]);
 
   return (
     <button

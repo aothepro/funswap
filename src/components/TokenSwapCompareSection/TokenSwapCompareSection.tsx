@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { CardType, TokenCard } from "./TokenCard";
 import { TokenSwapContext } from "../TokenSwap/context/TokenSwapContext";
 import styles from "./styles.module.css";
+import { TokenSwapShareButton } from "./TokenSwapShareButton";
 
 export const TokenSwapCompareSection = () => {
   const { from, to } = useContext(TokenSwapContext);
@@ -16,6 +17,7 @@ export const TokenSwapCompareSection = () => {
         ></div>
       </div>
       <TokenCard token={to} cardType={CardType.TO} />
+      <TokenSwapShareButton />
     </div>
   );
 };
