@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# <img src="https://github.com/aothepro/funswap/blob/main/public/images/og-image.png?raw=true" width="48"> FunSwap
 
-## Getting Started
+Swap Crypto Tokens Instantly with Real-Time Prices
 
-First, run the development server:
+Check it out here: [funswap.vercel.app](https://funswap.vercel.app)
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Performance](#performance)
+
+---
+
+## Features
+
+🔒 API key not exposed in the frontend
+
+🚁 Hover states with input focus when card click
+
+📱 Responsive design for Desktop and smaller devices
+
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/mobile-responsive.jpg?raw=true" width="100">
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/desktop.png?raw=true" width="400">
+
+💾 Copy token value to check on own workflow
+
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/copy.png?raw=true" width="100">
+
+🔗 Copy chosen token to open on different device to share with friends
+
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/share.png?raw=true" width="100">
+
+👨‍👩‍👧‍👦 Accessibility coverage for devices
+
+🐌 Loading states
+
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/funswap-loading.png?raw=true" width="100">
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/fetching-price.png?raw=true" width="100">
+
+😍 Meta tags for social media and SEO with favicon
+
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/whatsapp.jpg?raw=true" width="100">
+
+🔦 Dark mode support
+
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/light-mode.png?raw=true" width="100">
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/dark-mode.png?raw=true" width="100">
+
+## Installation
+
+First, clone the repo:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/aothepro/funswap.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next, create an `.env` file in the folder
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd funswamp
+touch .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Paste and update the enviroment variable:
 
-## Learn More
+```
+FUN_API_KEY=
+HOSTING_DOMAIN=https://funswap.vercel.app/
+```
 
-To learn more about Next.js, take a look at the following resources:
+Finally, run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`npm run dev`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+and open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploy on Vercel
+## Performance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Lighthouse
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[View report](https://github.com/aothepro/funswap/blob/main/public/lighthouse_report.pdf)
+<img src="https://github.com/aothepro/funswap/blob/main/public/images/lighthouse.png?raw=true">
