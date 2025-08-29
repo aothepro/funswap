@@ -49,8 +49,10 @@ export const TokenCard = ({
     return abortController;
   }, [token]);
 
-  const [amountInput, setAmountInput] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [tokenAmount, setTokenAmount] = useState("");
+  const [usdAmount, setUsdAmount] = useState("");
+  const tokenRef = useRef<HTMLInputElement>(null);
+  const usdRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const controller = loadToken();
@@ -61,9 +63,13 @@ export const TokenCard = ({
   }, [loadToken]);
 
   useEffect(() => {
-    if (conversionDetails?.symbol !== token?.symbol)
-      setAmountInput((1 / rate) * (conversionDetails?.valueInUSD || 1) + "");
-  }, [conversionDetails, rate, token?.symbol]);
+    if (document.activeElement !== usdRef.current) {
+      setUsdAmount((conversionDetails?.valueInUSD || 0) + "");
+    }
+    if (document.activeElement !== tokenRef.current) {
+      setTokenAmount((1 / rate) * (conversionDetails?.valueInUSD || 0) + "");
+    }
+  }, [conversionDetails, rate]);
 
   return (
     <div className="cursor-pointer w-md">
@@ -77,11 +83,6 @@ export const TokenCard = ({
         </span>
       </div>
       <div
-        onClick={() => {
-          if (inputRef == null) return;
-          inputRef.current?.focus();
-          inputRef.current?.select();
-        }}
         className={`flex items-center min-h-52 bg-white border border-gray-200 rounded-lg shadow-sm hover:scale-105 ${
           cardType === CardType.FROM
             ? "hover:from-indigo-400 hover:to-teal-500 bg-linear-to-r/srgb from-indigo-500 to-teal-400"
@@ -126,18 +127,32 @@ export const TokenCard = ({
                   </div>
                 </div>
               ) : (
-                <CurrencyInputWithCopy
-                  input={amountInput}
-                  symbol={token.symbol}
-                  ref={inputRef}
-                  onChange={(input) => {
-                    setAmountInput(input);
-                    setConversionDetails({
-                      symbol: token?.symbol ?? "",
-                      valueInUSD: parseFloat(input) * rate,
-                    });
-                  }}
-                />
+                <div className="flex flex-col gap-3">
+                  <CurrencyInputWithCopy
+                    ref={usdRef}
+                    input={usdAmount}
+                    symbol={"USD"}
+                    onChange={(e, input) => {
+                      setConversionDetails({
+                        valueInUSD: parseFloat(input),
+                        symbol: token?.symbol || "",
+                      });
+                      setUsdAmount(input);
+                    }}
+                  />
+                  <CurrencyInputWithCopy
+                    ref={tokenRef}
+                    input={tokenAmount}
+                    symbol={token.symbol}
+                    onChange={(e, input) => {
+                      setConversionDetails({
+                        valueInUSD: rate * parseFloat(input),
+                        symbol: token?.symbol || "",
+                      });
+                      setTokenAmount(input);
+                    }}
+                  />
+                </div>
               )}
             </div>
           </div>

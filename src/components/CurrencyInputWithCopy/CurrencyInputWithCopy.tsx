@@ -8,8 +8,8 @@ export const CurrencyInputWithCopy = ({
 }: {
   input: string;
   symbol: string;
-  ref: Ref<HTMLInputElement>;
-  onChange: (input: string) => void;
+  ref?: Ref<HTMLInputElement>;
+  onChange: (e: ChangeEvent<HTMLInputElement>, input: string) => void;
 }) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [isContentCopied, setIsContentCopied] = useState(false);
@@ -28,12 +28,12 @@ export const CurrencyInputWithCopy = ({
       { result: "", hasDecimal: false }
     ).result;
 
-    onChange(cleaned);
+    onChange(e, cleaned);
   };
 
   const handleCopy = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
     e.stopPropagation();
+    e.preventDefault();
 
     await navigator.clipboard.writeText(input).then(() => {
       setIsContentCopied(true);
