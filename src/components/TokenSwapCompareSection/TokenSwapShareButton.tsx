@@ -27,7 +27,7 @@ export const TokenSwapShareButton = () => {
         )}
 
         <button
-          className="shrink w-6 m-2 p-1 rounded-full bg-white border outline-0.5 hover:scale-110 cursor-pointer bg-linear-to-r/hsl from-indigo-700 to-teal-600"
+          className="shrink w-6 m-2 p-1 rounded-full bg-white border outline-0.5 hover:scale-110 transition-all cursor-pointer bg-linear-to-r/hsl from-indigo-700 to-teal-600"
           onMouseEnter={() => {
             setShowTooltip(true);
           }}

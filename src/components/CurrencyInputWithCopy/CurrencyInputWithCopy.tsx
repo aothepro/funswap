@@ -53,7 +53,7 @@ export const CurrencyInputWithCopy = ({
         ref={ref}
         onChange={(e) => changeConversionHandler(e)}
         value={input}
-        className="focus:scale-110 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="focus:scale-110 hover:scale-105 transition-all p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
       <label
         htmlFor="token-value"
@@ -77,7 +77,7 @@ export const CurrencyInputWithCopy = ({
             if (!isContentCopied) setShowTooltip(false);
           }}
           onClick={handleCopy}
-          className="cursor-pointer rounded-lg dark:bg-gray-800 bg-gray-50 py-3 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="hover:scale-110 cursor-pointer rounded-lg dark:bg-gray-800 bg-gray-50 py-3 px-3 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           aria-label={`copy ${symbol} token value`}
         >
           <div className="h-4 w-4">

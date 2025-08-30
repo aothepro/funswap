@@ -61,12 +61,12 @@ export const TokenSelectorButton = ({ token }: { token: TToken }) => {
     <button
       onClick={handleTokenClick}
       key={`${token.chainId} - ${token.symbol}`}
-      className={`hover:scale-130 text-black dark:text-white ${
+      className={`hover:scale-120 text-black dark:text-white transition-all ${
         isTokenSame(from, token) &&
-        "scale-120 font-bold text-white hover:from-indigo-400 hover:to-teal-500 bg-linear-to-r/srgb from-indigo-500 to-teal-400"
+        "scale-110 font-bold text-white hover:from-indigo-400 hover:to-teal-500 bg-linear-to-r/srgb from-indigo-500 to-teal-400"
       } ${
         isTokenSame(to, token) &&
-        "scale-120 font-bold text-white hover:from-violet-400 hover:to-fuchsia-500 bg-linear-to-bl from-violet-500 to-fuchsia-500"
+        "scale-110 font-bold text-white hover:from-violet-400 hover:to-fuchsia-500 bg-linear-to-bl from-violet-500 to-fuchsia-500"
       } cursor-pointer block max-w-sm p-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 hover:scale-120 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}
       aria-label={`select ${token.symbol} token`}
     >
