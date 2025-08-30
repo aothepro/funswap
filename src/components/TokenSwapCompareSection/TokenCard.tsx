@@ -120,10 +120,12 @@ export const TokenCard = ({
             </div>
             <div className="font-normal text-gray-700 dark:text-gray-400">
               {inFlight ? (
-                <div className="flex gap-2 h-12 my-auto backdrop-blur-3xl p-2 rounded-full outline-1">
-                  <Spinner />
-                  <div className="my-auto text-lg font-bold leading-none tracking-tight text-white pe-3">
-                    Fetching latest price
+                <div className="flex h-[108px]">
+                  <div className="flex gap-2 my-auto backdrop-blur-3xl p-2 rounded-full outline-1">
+                    <Spinner />
+                    <div className="my-auto text-lg font-bold leading-none tracking-tight text-white pe-3">
+                      Fetching latest price
+                    </div>
                   </div>
                 </div>
               ) : (
